@@ -4,9 +4,9 @@ from pylingva import pylingva
 translator = pylingva()
 
 ap = ArgumentParser(description="Auto-translate PO files")
-ap.add_argument("--file", '-s', nargs=1, required=True, help="File", metavar='/path/to/file')
-ap.add_argument("--source", '-f', nargs=1, required=False, metavar='lang', help="Source language, default: en")
-ap.add_argument("--to", '-t', nargs=1, required=True, metavar='lang', help="Target language")
+ap.add_argument("--file", '-f', nargs=1, required=True, help="File", metavar='/path/to/file')
+ap.add_argument("--source", '-s', nargs=1, required=False, metavar='lang', help="Source language, default: en")
+ap.add_argument("--destination", '-d', nargs=1, required=True, metavar='lang', help="Destination language")
 
 args = ap.parse_args()
 
@@ -16,7 +16,7 @@ if src == None:
 else:
     src = src[0]
 
-des = args.to[0]
+des = args.destination[0]
 file = pofile(args.file[0])
 
 for entry in file.untranslated_entries():
